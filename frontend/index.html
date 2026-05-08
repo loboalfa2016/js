@@ -8,9 +8,46 @@
 </head>
 <body>
     <main class="min-h-screen flex items-center justify-center">
-        <ul class="w-[300px] h-[300px] border border-blue-300 rounded-l-2xl">
-
+        <ul  id="characters" class="w-[300px] h-[300px] border border-blue-300 rounded-l-2xl grid grid-cols-5 grid-rows-5">
+            <li class="w-full bg-amber-950">
+            </li>
+            <li class="w-full bg-amber-900"></li>
+            <li class="w-full bg-amber-800"></li>
+            <li class="w-full bg-amber-700"></li>
+            <li class="w-full bg-amber-600"></li>
+            <li class="w-full bg-amber-500"></li>
+            <li class="w-full bg-amber-400"></li>
+            <li class="w-full bg-amber-300"></li>
+            <li class="w-full bg-amber-200"></li>
+            <li class="w-full bg-amber-100"></li>
+            <li class="w-full bg-amber-50"></li>
+            <li class="w-full bg-amber-100"></li>
+            <li class="w-full bg-amber-200"></li>
+            <li class="w-full bg-amber-300"></li>
+            <li class="w-full bg-amber-400"></li>
+            <li class="w-full bg-amber-500"></li>
+            <li class="w-full bg-amber-600"></li>
+            <li class="w-full bg-amber-700"></li>
+            <li class="w-full bg-amber-800"></li>
+            <li class="w-full bg-amber-900"></li>
+            <li class="w-full bg-amber-950"></li>
+            
         </ul>
+        <section class="w-full max-w-4xl">
+            <h2 class="text-2xl font-bold text-center">lista de coders</h2>
+            <ul id="coders-list" class="w-full min-h-[600px] border border-blue-300 rounded-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                
+            </ul>
+        </section>
+        <section id="aut-section" class="mt-8 p-6 border rounded-lg hidden">
+            <h3 class="text-xl font-semibold text-center">Autenticación</h3>
+            <form action="">
+                <input type="email" placeholder="Correo electrónico">
+                <input type="password" placeholder="Contraseña">
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            <div id="aut-message"></div>
+        </section>
     </main>
     <script src="js/script.js"></script>
 </body>

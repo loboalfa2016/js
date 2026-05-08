@@ -1,32 +1,3 @@
-//alert("hello coder!");
-//const name = prompt("What is your name?");//
-//alert(`Hello, ${name}!`);// 
-const getElement  = (id) => {
-    return document.getElementById(id)
-}
-
-const url = "https://rickandmortyapi.com/api/character";
-const codeurl = "http://localhost:3000/coders"; 
-
-
-
-
-async function getData(url) {
-    const response = await fetch(url)
-    const {results} = await response.json()
-    const statusAlive = results.filter(character => character.status === "Alive")
-    const nombresVivos = statusAlive.map(character => character.name)
-    console.log(nombresVivos); 
-
-    const characters = getElement("characters")
-    console.log({characters});
-    results.forEach(character => {
-        console.log(character.name);
-        characters.innerHTML += `<li><img src="${character.image}" alt="${character.name}"></li>`;
-    });
-}
-
-
 async function getCoderData(codeurl) {
     try {
         console.log("Intentando conectar a:", codeurl);
@@ -39,7 +10,10 @@ async function getCoderData(codeurl) {
         const coders = await response.json();
         console.log("Datos recibidos:", coders);
         
-        // Pedir nombre al usuario primero
+        // Mostrar coders visualmente
+        displayCoders(coders);
+        
+        // Pedir nombre al usuario
         console.log("A punto de mostrar prompt...");
         const userName = prompt("¿Cuál es tu nombre?");
         console.log("Nombre ingresado:", userName);
@@ -47,7 +21,6 @@ async function getCoderData(codeurl) {
         
         if (!userName) {
             console.log("No se ingresó ningún nombre");
-            alert("Por favor ingresa tu nombre para continuar");
             return;
         }
         
@@ -61,7 +34,6 @@ async function getCoderData(codeurl) {
         });
         console.log("Coder encontrado:", foundCoder);
         
-        // Solo mostrar coders si el nombre existe en la base de datos
         if (foundCoder) {
             // Validación especial para Emanuel
             if (foundCoder.name.toLowerCase() === "emanuel") {
@@ -70,15 +42,12 @@ async function getCoderData(codeurl) {
                 
                 if (email === foundCoder.email && password === foundCoder.password) {
                     alert("¡Autenticación exitosa! Bienvenido Emanuel");
-                    displayCoders(coders); // Solo mostrar lista si la autenticación es exitosa
                 } else {
                     alert("Email o contraseña incorrectos");
-                    return; // No mostrar lista si las credenciales son incorrectas
                 }
             } else {
-                // Para otros coders, mostrar saludo normal y lista
+                // Para otros coders, mostrar saludo normal
                 alert(`¡Hola ${foundCoder.name}!`);
-                displayCoders(coders);
             }
         } else {
             alert("No hay nombres que coincidan con tu búsqueda");
@@ -108,5 +77,3 @@ function displayCoders(coders) {
         });
     }
 }
-
-getCoderData(codeurl)
